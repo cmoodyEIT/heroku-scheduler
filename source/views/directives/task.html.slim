@@ -14,3 +14,9 @@ div.md-whiteframe-1dp layout='column'
     md-input-container
       label Next Run
       md-datepicker ng-model='scheduledJob.next_run'
+
+  div layout-gt-xs='row' layout='column' layout-align=' space-between'
+    md-button.md-raised.md-primary ng-click='save()'   ng-show="scheduledJob.$notEditing" Save
+    md-button.md-raised            ng-click='edit()'   ng-hide="scheduledJob.$notEditing" Edit
+    md-button.md-raised            ng-click='cancel()' ng-show="scheduledJob.$notEditing" Cancel
+    md-button.md-raised            ng-click='edit()'   Delete
