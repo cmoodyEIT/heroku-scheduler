@@ -1,22 +1,22 @@
 div.md-whiteframe-1dp layout='column'
   md-input-container
     label Task
-    input type='text' ng-model="scheduledJob.task"
+    input type='text' ng-model="scheduledJob.task" ng-disabled="!scheduledJob.$editing"
   div layout-gt-xs='row' layout='column' layout-align=' space-between'
     md-input-container
       label DynoSize
-      md-select ng-model="scheduledJob.size"
+      md-select ng-model="scheduledJob.size" ng-disabled="!scheduledJob.$editing"
         md-option ng-repeat="option in ['free','hobby','level1']" ng-value='option'
           | {{option}}
     md-input-container
       label Last Run
-      md-datepicker ng-model='scheduledJob.last_run'
+      md-datepicker ng-model='scheduledJob.last_run' ng-disabled="!scheduledJob.$editing"
     md-input-container
       label Next Run
-      md-datepicker ng-model='scheduledJob.next_run'
+      md-datepicker ng-model='scheduledJob.next_run' ng-disabled="!scheduledJob.$editing"
 
   div layout-gt-xs='row' layout='column' layout-align=' space-between'
     md-button.md-raised.md-primary ng-click='save()'   ng-show="scheduledJob.$editing" Save
     md-button.md-raised            ng-click='edit()'   ng-hide="scheduledJob.$editing" Edit
     md-button.md-raised            ng-click='cancel()' ng-show="scheduledJob.$editing" Cancel
-    md-button.md-raised            ng-click='edit()'   Delete
+    md-button.md-raised            ng-click='delete()' ng-show="scheduledJob.id"       Delete
